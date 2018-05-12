@@ -5,11 +5,19 @@
 # vagrant-env (0.0.3)
 # vagrant-faster (0.2.0)
 # vagrant-hostmanager (1.8.8)
-# vagrant-hosts-provisioner (2.0)
 # vagrant-share (1.1.9)
 # vagrant-timezone (1.2.0)
 # vagrant-vbguest (0.15.1)
-
+unless Vagrant.has_plugin?("vagrant-env")
+  system("vagrant plugin install vagrant-env")
+  system("vagrant plugin install vagrant-faster")
+  system("vagrant plugin install vagrant-hostmanager")
+  system("vagrant plugin install vagrant-share")
+  system("vagrant plugin install vagrant-timezone")
+  system("vagrant plugin install vagrant-vbguest")
+  puts "Dependencies installed, please try the command again."
+  exit
+end
 
 # Parameters
 # All Vagrant configuration is done in the .env file below.
