@@ -63,9 +63,9 @@ config.vm.hostname = ENV['name']
   config.vm.provision "file", run: "always", source: "~/.ssh/", destination: "host_ssh"
   # Standard provion organization suggestion
   # Repos installations (once as root)
-	#config.vm.provision "s00", type:"shell", name: "mysql", path: "provision/00repos.sh"
+	config.vm.provision "s00", type:"shell", name: "mysql", path: "provision/00repos.sh"
   # Lamp config (once as root)
-	#config.vm.provision "s10", type:"shell", name: "lamp",  path: "provision/10lamp.sh"
+	config.vm.provision "s10", type:"shell", name: "lamp",  path: "provision/10lamp.sh"
   # User conf (both root and vagrant always as vagrant)
 	config.vm.provision "u20", type:"shell", name: "user",  path: "provision/20user.sh", privileged: false, run: "always"
   # Specific configuration (once as root)
@@ -89,9 +89,10 @@ config.vm.hostname = ENV['name']
   config.hostmanager.ignore_private_ip = false
   config.hostmanager.include_offline = false
   config.hostmanager.aliases = %w(hostname1 hostname2 hostname3)
-  config.hostmanager.ip_resolver = proc do |vm, resolving_vm
+  config.hostmanager.ip_resolver = proc do |vm| # resolving_vm
   # checl actual interface name
     if hostname = (vm.ssh_info && vm.ssh_info[:host])
       `vagrant ssh -c "/sbin/ifconfig enp0s8 " | grep "inet addr" | tail -n 1 | egrep -o "[0-9\.]*" | head -n 1 2>&1`.split("\n").first[/(\d+\.\d+\.\d+\.\d+)/, 1]
     end
   end
+end
