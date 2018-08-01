@@ -88,8 +88,9 @@ config.vm.hostname = ENV['name']
   config.hostmanager.manage_guest = false
   config.hostmanager.ignore_private_ip = false
   config.hostmanager.include_offline = false
-  config.hostmanager.aliases = %w(erp.amtitalia.com www.uno8uno.it erp.webgrind.test)
-  config.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+  config.hostmanager.aliases = %w(hostname1 hostname2 hostname3)
+  config.hostmanager.ip_resolver = proc do |vm, resolving_vm
+  # checl actual interface name
     if hostname = (vm.ssh_info && vm.ssh_info[:host])
       `vagrant ssh -c "/sbin/ifconfig enp0s8 " | grep "inet addr" | tail -n 1 | egrep -o "[0-9\.]*" | head -n 1 2>&1`.split("\n").first[/(\d+\.\d+\.\d+\.\d+)/, 1]
     end
