@@ -1,0 +1,19 @@
+
+# roles/webserver/tasks/main.yml
+---
+- name: 1. install Mariadb
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - mariadb-client
+    - mariadb-server
+    - mariadb-common
+- name: User add
+  shell: mysql -e 'GRANT ALL PRIVILEGES ON *.* TO "vagrant"@"%" IDENTIFIED BY "secret";'
+- name:
+  copy: src=my.cnf dest=/home/vagrant/.my.cnf mode=0600
+  become: true
+  become_user: vagrant
+  

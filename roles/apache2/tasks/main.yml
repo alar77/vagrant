@@ -1,0 +1,42 @@
+
+# roles/webserver/tasks/main.yml
+---
+- name: Apache
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - apache2
+    - libapache2-mod-php
+    - libapache2-mpm-itk
+    - php-xdebug
+    - python
+    - graphviz
+    - php-mbstring
+
+- name: Apache modules
+  shell: a2enmod mpm_itk
+  
+- name: Discovering php version
+  shell: php -r 'printf("%d.%d",PHP_MAJOR_VERSION,PHP_MINOR_VERSION);'
+  register: phpversion
+  
+- debug: var=phpversion  
+   
+  
+- name: Adding php configuration
+  copy: src=php.ini dest="/etc/php/{{ phpversion.stdout }}/apache2/conf.d/99local.ini" mode=0660
+
+
+- name: Adding apache configuration
+  copy: src=site.conf dest=/etc/apache2/sites-available/site.conf mode=0660
+  
+- name: Customizing apache configuration
+  replace: path=/etc/apache2/sites-available/site.conf regexp="HOSTNAME"  replace="{{ hostname }}"
+
+- name: Enable site
+  shell: a2ensite site
+
+- name: Apache restart
+  service: name=apache2 state=restarted enabled=yes

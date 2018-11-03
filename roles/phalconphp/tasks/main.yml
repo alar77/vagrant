@@ -1,0 +1,5 @@
+# Disabling warnings
+- name: Installing phalcon repository.
+  shell: curl -s "https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh" | bash
+  args:
+    warn: False

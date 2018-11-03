@@ -1,0 +1,5 @@
+.allowmastercommit
+.env
+.vagrant/
+vendor/
+playbook.retry

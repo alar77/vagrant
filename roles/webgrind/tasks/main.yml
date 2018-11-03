@@ -1,0 +1,32 @@
+# Installs webgrind
+--- 
+- name: Create webgrind directory
+  file: 
+    path: /var/www/webgrind
+    owner: vagrant
+    group: vagrant
+    state: directory
+    mode: 0755
+     
+- name: Clone Webgrind
+  become: true
+  become_user: vagrant
+  git:
+    repo: https://github.com/jokkedk/webgrind
+    dest: /var/www/webgrind
+    clone: yes
+    update: yes
+- name: Adding apache configuration
+  copy: src=webgrind.conf dest=/etc/apache2/sites-available/webgrind.conf mode=0660
+- name: Customizing apache configuration
+  replace:
+    path: /etc/apache2/sites-available/webgrind.conf
+    regexp: "HOSTNAME"
+    replace: "{{ hostname }}"
+- name: Enable site
+  shell: a2ensite webgrind
+
+- name: Apache restart
+  service: name=apache2 state=restarted enabled=yes
+
+        

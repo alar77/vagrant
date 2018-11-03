@@ -1,0 +1,9 @@
+
+# playbook.yml
+---
+- hosts: all
+  become: yes
+  roles:
+    - apache2
+    - mariadb
+    - webgrind
