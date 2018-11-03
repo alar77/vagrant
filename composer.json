@@ -1,8 +1,33 @@
 {
-    "name": "alar77/vagrant-skeleton",
-    "description": "Skeleton for vagrant development",
+    "name": "alar77/vagrant",
+    "description": "Project kickstart",
     "type": "project",
+    "keywords": [
+        "skeleton"
+    ],
+    "homepage": "https://github.com/alar77/vagrant",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giovanni Gargani",
+            "email": "alar@aspide.it",
+            "role": "Developer"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
     "require": {
         "php": "^7.2"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Skeleton\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Skeleton\\": "src/"
+        }
+    },
 }
