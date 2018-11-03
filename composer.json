@@ -1,4 +1,7 @@
 {
+    "name": "alar77/vagrant-skeleton",
+    "description": "Skeleton for vagrant development",
+    "type": "project",
     "require": {
         "php": "^7.2"
     }
