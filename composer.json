@@ -3,7 +3,9 @@
     "description": "Project kickstart",
     "type": "project",
     "keywords": [
-        "skeleton"
+        "skeleton",
+        "vagrant",
+        "php"
     ],
     "homepage": "https://github.com/alar77/vagrant",
     "license": "MIT",
@@ -29,5 +31,5 @@
         "psr-4": {
             "Skeleton\\": "src/"
         }
-    },
+    }
 }
