@@ -1,0 +1,11 @@
+{
+    "packages": {
+        "alar/vagrant-skeleton": {
+            "dev-master": {
+            	"name":"alar/vagrant-skeleton",
+            	"source": "./",
+            	"version": "dev-master"
+			}
+        }
+    }
+}
