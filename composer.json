@@ -1,5 +1,5 @@
 {
-    "name": "alar77/vagrant",
+    "name": "alar/vagrant-skeleton",
     "description": "Project kickstart",
     "type": "project",
     "keywords": [
@@ -7,7 +7,7 @@
         "vagrant",
         "php"
     ],
-    "homepage": "https://github.com/alar77/vagrant",
+    "homepage": "https://github.com/alar77/vagrant-skeleton",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
         "sort-packages": true
     },
     "require": {
-        "php": "^7.2"
+		"php": ">5.4"
     },
     "autoload": {
         "psr-4": {
