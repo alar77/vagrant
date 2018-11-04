@@ -31,13 +31,10 @@
 			"Skeleton\\" : "installer/"
 		}
 	},
-	"bin" : [
-		"installer\\installer.php"
-	],
 	"scripts" : {
 		"post-create-project-cmd" : [
 			"@composer init",
-			"@php installer.php"
+			"@php installer/installer.php"
 		]
 	},
 	"minimum-stability" : "stable"
