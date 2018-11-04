@@ -1,35 +1,44 @@
 {
-    "name": "alar/vagrant-skeleton",
-    "description": "Project kickstart",
-    "type": "project",
-    "keywords": [
-        "skeleton",
-        "vagrant",
-        "php"
-    ],
-    "homepage": "https://github.com/alar77/vagrant-skeleton",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Giovanni Gargani",
-            "email": "alar@aspide.it",
-            "role": "Developer"
-        }
-    ],
-    "config": {
-        "sort-packages": true
-    },
-    "require": {
-		"php": ">5.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "Skeleton\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Skeleton\\": "src/"
-        }
-    }
+	"name" : "alar/vagrant-skeleton",
+	"description" : "Project kickstart",
+	"type" : "project",
+	"keywords" : [
+		"skeleton",
+		"vagrant",
+		"php"
+	],
+	"homepage" : "https://github.com/alar77/vagrant-skeleton",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Giovanni Gargani",
+			"email" : "alar@aspide.it",
+			"role" : "Developer"
+		}
+	],
+	"config" : {
+		"sort-packages" : true
+	},
+	"require" : {
+		"php" : ">=5.1"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Skeleton\\" : "installer/"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Skeleton\\" : "installer/"
+		}
+	},
+	"bin" : [
+		"installer\\installer.php"
+	],
+	"scripts" : {
+		"post-create-project-cmd" : [
+			"@composer init",
+			"@php installer.php"
+		]
+	},
+	"minimum-stability" : "stable"
 }
