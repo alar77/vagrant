@@ -1,4 +1,6 @@
 # Copy over .env
+# a name for your vagrant machine
 name=FILLME
 vbguestupdate=0
-box=FILLME
+# You can change to a different ubuntu version
+box=ubuntu/bionic64
