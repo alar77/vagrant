@@ -1,3 +1,4 @@
 # vagrant
-Skeleton to create a vangrant backed lamp server
-Based on Ubunut 18.04
+Skeleton to create a vagrant backed lamp server
+
+Uses a standard ubuntu image (ubuntu/bionic64 by default)
